@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: db-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/micro?useTimezone=true&serverTimezone=America/Sao_Paulo
+    username: micro_app_user
+    password: fRuejeo4x8PneRYXnBGS
+    testWhileIdle: true
+    validationQuery: SELECT 1
+
+  jpa:
+    show-sql: true
+    open-in-view: true
+    hibernate:
+      ddl-auto: update
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8302/eureka/
+    instance:
+      hostname: localhost
+
+server:
+  port: 8300
