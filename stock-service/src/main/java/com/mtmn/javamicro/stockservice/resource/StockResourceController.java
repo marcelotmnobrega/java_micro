@@ -1,7 +1,6 @@
 package com.mtmn.javamicro.stockservice.resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -12,39 +11,41 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
-import yahoofinance.quotes.stock.StockQuote;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/rest/stock")
+@RequestMapping("/rest/stockprice")
 public class StockResourceController {
 
     @Autowired
     private RestTemplate restTemplate;
 
     @GetMapping("/{username}")
-    public List<Stock> getStock(@PathVariable("username") final String username){
-        String url = "http://localhost:8300/rest/db/" + username;
-        ResponseEntity<List<String>> quoteResponse =
-                restTemplate.exchange(url, HttpMethod.GET, null, new ParameterizedTypeReference<List<String>>() {});
-        List<String> quotes = quoteResponse.getBody();
-        List<Stock> result = quotes
+    public Map<String, BigDecimal> getStockPrices(@PathVariable("username") final String username){
+        String userTickersByUsernameURL = "http://localhost:8300/rest/db/userticker/" + username;
+        ResponseEntity<List<String>> userTickersResponse =
+                restTemplate.exchange(userTickersByUsernameURL, HttpMethod.GET, null,
+                        new ParameterizedTypeReference<List<String>>() {});
+        List<String> tickers = userTickersResponse.getBody();
+        Map<String, BigDecimal> result = tickers
                 .stream()
-                .map(this::getStockPrice)
-                .collect(Collectors.toList());
+                .collect(Collectors.toMap(ticker -> ticker,
+                                          this::getStockPrice,
+                                          (oldValue, newValue) -> newValue));
         return result;
     }
 
-    private Stock getStockPrice(String ticker) {
+    private BigDecimal getStockPrice(String ticker) {
         try {
-            return YahooFinance.get(ticker);
+            return YahooFinance.get(ticker).getQuote().getPrice();
         } catch (IOException e) {
             e.printStackTrace();
-            return new Stock(ticker);
+            return BigDecimal.ZERO;
         }
     }
 }

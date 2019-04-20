@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
-@EnableJpaRepositories(basePackages = "com.mtmn.javamicro.dbservice.quote")
+@EnableJpaRepositories(basePackages = "com.mtmn.javamicro.dbservice.userticker")
 @EnableEurekaClient
 @SpringBootApplication
 public class DbServiceApplication {
