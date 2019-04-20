@@ -20,7 +20,7 @@ Covering the below microservices:
 
 ## Architecture Diagram
 
-(Components-Diagram.PNG)
+![Architecture](Components-Diagram.PNG)
 
 ## Eureka Monitor
 
