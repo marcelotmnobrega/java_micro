@@ -30,6 +30,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.yahoofinance-api</groupId>
 			<artifactId>YahooFinanceAPI</artifactId>
 			<version>${com.yahoofinance-api.version}</version>

@@ -26,17 +26,16 @@ public class StockResourceController {
     private RestTemplate restTemplate;
 
     @GetMapping("/{username}")
-    public Map<String, BigDecimal> getStockPrices(@PathVariable("username") final String username){
+    public List<StockTickerPriceDTO> getStockPrices(@PathVariable("username") final String username){
         String userTickersByUsernameURL = "http://db-service/rest/db/userticker/" + username;
         ResponseEntity<List<String>> userTickersResponse =
                 restTemplate.exchange(userTickersByUsernameURL, HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<String>>() {});
         List<String> tickers = userTickersResponse.getBody();
-        Map<String, BigDecimal> result = tickers
+        List<StockTickerPriceDTO> result = tickers
                 .stream()
-                .collect(Collectors.toMap(ticker -> ticker,
-                                          this::getStockPrice,
-                                          (oldValue, newValue) -> newValue));
+                .map(ticker -> new StockTickerPriceDTO(ticker, getStockPrice(ticker)))
+                .collect(Collectors.toList());
         return result;
     }
 

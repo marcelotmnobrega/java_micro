@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "447ad6e1-2d91-47c6-a235-b0cb4f0e54e9",
+		"name": "Java Microservices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetTickersByUsername",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5b042616-7c81-4a3c-8fee-7adea58ad5e6",
+						"exec": [
+							"pm.environment.get(\"BASE_URL_DBSERVICE\");",
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+							"    console.log(response.json());",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL_DBSERVICE}}/rest/db/userticker/Pimpo",
+					"host": [
+						"{{BASE_URL_DBSERVICE}}"
+					],
+					"path": [
+						"rest",
+						"db",
+						"userticker",
+						"Pimpo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddUserTickers",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"Sam\",\n\t\"tickers\": [\"GOOG\",\"APPL\"]\n}"
+				},
+				"url": {
+					"raw": "{{BASE_URL_DBSERVICE}}/rest/db/userticker/add",
+					"host": [
+						"{{BASE_URL_DBSERVICE}}"
+					],
+					"path": [
+						"rest",
+						"db",
+						"userticker",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUserTickersByUsername",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL_DBSERVICE}}/rest/db/userticker/delete/Pimpo",
+					"host": [
+						"{{BASE_URL_DBSERVICE}}"
+					],
+					"path": [
+						"rest",
+						"db",
+						"userticker",
+						"delete",
+						"Pimpo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStockPricesByUsername",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL_STOCKSERVICE}}/rest/stockprice/Pimpo",
+					"host": [
+						"{{BASE_URL_STOCKSERVICE}}"
+					],
+					"path": [
+						"rest",
+						"stockprice",
+						"Pimpo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUserTickersByUsernameUsingAPIGateway",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL_API_GATEWAY}}/api/db-service/rest/db/userticker/Pimpo",
+					"host": [
+						"{{BASE_URL_API_GATEWAY}}"
+					],
+					"path": [
+						"api",
+						"db-service",
+						"rest",
+						"db",
+						"userticker",
+						"Pimpo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStockPricesByUsernameUsingAPIGateway",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{BASE_URL_API_GATEWAY}}/api/stock-service/rest/stockprice/Pimpo",
+					"host": [
+						"{{BASE_URL_API_GATEWAY}}"
+					],
+					"path": [
+						"api",
+						"stock-service",
+						"rest",
+						"stockprice",
+						"Pimpo"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

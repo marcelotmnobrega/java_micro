@@ -10,6 +10,7 @@ https://www.youtube.com/watch?v=rlS9eH5tEnY
 
 For more info:
 https://github.com/TechPrimers/stock-price-viewer-microservices-part1
+https://github.com/TechPrimers/stock-price-viewer-microservices-part2-final
 
 Covering the below microservices:
 
@@ -17,4 +18,10 @@ Covering the below microservices:
 - `stock-service` - For pulling Stock Price from YahooFinance API
 - `eureka-service` - Service Registry for registering all microservices
 
-![Architecture](Components-Diagram.PNG)
+## Architecture Diagram
+
+(Components-Diagram.PNG)
+
+## Eureka Monitor
+
+http://localhost:8302/
