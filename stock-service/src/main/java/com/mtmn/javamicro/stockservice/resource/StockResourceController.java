@@ -27,7 +27,7 @@ public class StockResourceController {
 
     @GetMapping("/{username}")
     public Map<String, BigDecimal> getStockPrices(@PathVariable("username") final String username){
-        String userTickersByUsernameURL = "http://localhost:8300/rest/db/userticker/" + username;
+        String userTickersByUsernameURL = "http://db-service/rest/db/userticker/" + username;
         ResponseEntity<List<String>> userTickersResponse =
                 restTemplate.exchange(userTickersByUsernameURL, HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<String>>() {});
@@ -45,7 +45,7 @@ public class StockResourceController {
             return YahooFinance.get(ticker).getQuote().getPrice();
         } catch (IOException e) {
             e.printStackTrace();
-            return BigDecimal.ZERO;
+            return BigDecimal.valueOf(-1);
         }
     }
 }
