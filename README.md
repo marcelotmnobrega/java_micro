@@ -1,8 +1,10 @@
-# java_micro
-Java Microservice Projects for Stocks
+# Java Microservice Projects
+I'm using only one repo to make it easier.
 
-Based on the YouTube videos by TechPrimers:
+Created based on the YouTube videos by TechPrimers.
+
 Designing Microservices using Spring Boot, Spring Cloud, Eureka and Zuul | # 1 | Tech Primers
+
 https://www.youtube.com/watch?v=rlS9eH5tEnY
 
 For more info:
