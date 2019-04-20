@@ -28,5 +28,10 @@ eureka:
     instance:
       hostname: localhost
 
+logging:
+  level:
+    org:
+      hibernate: INFO
+
 server:
   port: 8300
