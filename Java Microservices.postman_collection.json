@@ -58,7 +58,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\": \"Sam\",\n\t\"tickers\": [\"GOOG\",\"APPL\"]\n}"
+					"raw": "{\n\t\"username\": \"Pimpo\",\n\t\"tickers\": [\"PETR4.SA\",\"ITUB\"]\n}"
 				},
 				"url": {
 					"raw": "{{BASE_URL_DBSERVICE}}/rest/db/userticker/add",
