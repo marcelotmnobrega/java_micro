@@ -14,9 +14,11 @@ https://github.com/TechPrimers/stock-price-viewer-microservices-part2-final
 
 Covering the below microservices:
 
-- `db-service` - For interactive with MySQL DB
-- `stock-service` - For pulling Stock Price from YahooFinance API
-- `eureka-service` - Service Registry for registering all microservices
+- `db-service` (port: 8300) - For interactive with MySQL DB
+- `stock-service` (port: 8301) - For pulling Stock Price from YahooFinance API
+- `eureka-service` (port: 8302) - Service Registry for registering all microservices
+- `api-gateway` (port: 8303) - Request routing
+- `ui` - Simple Angular App
 
 ## Architecture Diagram
 

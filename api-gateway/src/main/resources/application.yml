@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: api-gateway
+
+zuul:
+  prefix: /api
+  routes:
+    stock-service:
+      path: /stock-service/**
+      url: http://localhost:8301
+    db-service:
+      path: /db-service/**
+      url: http://localhost:8300
+
+server:
+  port: 8303

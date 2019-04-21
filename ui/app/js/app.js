@@ -8,7 +8,7 @@ app.config([
 app.controller("myCtrl", function($scope, $http) {
   this.retrieve = function() {
     $http
-      .get("http://127.0.0.1:8302/api/stock-service/rest/stock/" + $scope.name)
+      .get("http://localhost:8303/api/stock-service/rest/stock/" + $scope.name)
       .then(
         function(response) {
           console.log("inside" + response);
@@ -26,7 +26,7 @@ app.controller("myCtrl", function($scope, $http) {
       quotes: [$scope.quote]
     };
     $http
-      .post("http://127.0.0.1:8302/api/db-service/rest/db/add", message)
+      .post("http://localhost:8303/api/db-service/rest/db/add", message)
       .then(
         function(response) {
           $scope.quotes = response.data;
